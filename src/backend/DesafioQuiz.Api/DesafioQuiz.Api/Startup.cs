@@ -1,7 +1,9 @@
+using DesafioQuiz.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,9 @@ namespace DesafioQuiz.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=As;Trusted_Connection=True;";
+
+            services.AddDbContext<DesafioQuizContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

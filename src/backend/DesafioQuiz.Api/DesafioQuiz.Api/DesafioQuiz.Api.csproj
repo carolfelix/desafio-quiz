@@ -11,5 +11,17 @@
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesafioQuiz.Business\DesafioQuiz.Business.csproj" />
+    <ProjectReference Include="..\DesafioQuiz.Data\DesafioQuiz.Data.csproj" />
+  </ItemGroup>
+
 
 </Project>
