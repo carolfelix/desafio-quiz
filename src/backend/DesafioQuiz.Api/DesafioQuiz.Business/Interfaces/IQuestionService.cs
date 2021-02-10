@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DesafioQuiz.Business.Interfaces
 {
-    public interface IQuestionService
+    public interface IQuestionService : IDisposable
     {
     }
 }
