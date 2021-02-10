@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesafioQuiz.Business.Models
+namespace DesafioQuiz.Model
 {
     public class Entity
     {

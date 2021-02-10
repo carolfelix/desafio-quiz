@@ -1,8 +1,5 @@
-﻿using DesafioQuiz.Business.Models;
+﻿using DesafioQuiz.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DesafioQuiz.Data.Context
 {
