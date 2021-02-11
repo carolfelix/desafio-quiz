@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DesafioQuiz.Data\DesafioQuiz.Data.csproj" />
+    <ProjectReference Include="..\DesafioQuiz.Model\DesafioQuiz.Model.csproj" />
+  </ItemGroup>
+
 </Project>

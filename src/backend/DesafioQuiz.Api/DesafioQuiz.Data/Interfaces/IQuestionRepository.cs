@@ -1,7 +1,4 @@
-﻿using DesafioQuiz.Business.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using DesafioQuiz.Model;
 
 namespace DesafioQuiz.Data.Interfaces
 {
