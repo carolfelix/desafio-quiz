@@ -1,8 +1,11 @@
+using AutoMapper;
+using DesafioQuiz.Api.ViewModels;
 using DesafioQuiz.Business.Interfaces;
 using DesafioQuiz.Business.Services;
 using DesafioQuiz.Data.Context;
 using DesafioQuiz.Data.Interfaces;
 using DesafioQuiz.Data.Repository;
+using DesafioQuiz.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,7 +35,10 @@ namespace DesafioQuiz.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
             var connection = @"Server=(localdb)\mssqllocaldb;Database=As;Trusted_Connection=True;";
+            services.AddDbContext<DesafioQuizContext>(options => options.UseSqlServer(connection));
+
 
             services.AddScoped<IRepliesRepository, RepliesRepository>();
             services.AddScoped<IRepliesService, RepliesService>();
@@ -40,9 +46,15 @@ namespace DesafioQuiz.Api
             services.AddScoped<IQuestionService, QuestionService>();
 
 
+            var config = new AutoMapper.MapperConfiguration(map =>
+            {
+                map.CreateMap<QuestionViewModel, Question>().ReverseMap();
+                map.CreateMap<RepliesViewModel, Replies>().ReverseMap();
+            });
 
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
 
-            services.AddDbContext<DesafioQuizContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
