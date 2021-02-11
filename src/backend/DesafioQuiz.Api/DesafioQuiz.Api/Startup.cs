@@ -1,4 +1,8 @@
+using DesafioQuiz.Business.Interfaces;
+using DesafioQuiz.Business.Services;
 using DesafioQuiz.Data.Context;
+using DesafioQuiz.Data.Interfaces;
+using DesafioQuiz.Data.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +33,14 @@ namespace DesafioQuiz.Api
         {
             services.AddControllers();
             var connection = @"Server=(localdb)\mssqllocaldb;Database=As;Trusted_Connection=True;";
+
+            services.AddScoped<IRepliesRepository, RepliesRepository>();
+            services.AddScoped<IRepliesService, RepliesService>();
+            services.AddScoped<IQuestionRepository, QuestionRepository>();
+            services.AddScoped<IQuestionService, QuestionService>();
+
+
+
 
             services.AddDbContext<DesafioQuizContext>(options => options.UseSqlServer(connection));
         }
