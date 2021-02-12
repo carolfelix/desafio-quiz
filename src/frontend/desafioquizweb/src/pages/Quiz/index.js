@@ -4,13 +4,37 @@ import api from '../../services/api.services';
 
 import './style.css';
 
-export default function Quiz({ history }) {
+export default function Quiz() {
   
+    const [question, setQuestions] = useState([])
+
+    useEffect(() =>{
+
+        async function loadQuestions(){
+            let response = await api.get('/quiz/get-questions')
+            setQuestions(response.data)
+        }
+
+        loadQuestions();
+
+    }, [])
+
     return (
         <>
             <div className="container">
-                hello
-            </div>
+                teste
+                    <ul>
+                        {
+                            (question || []).map((question) => (
+                                <li key={question.id}>
+                                    <div>
+                                        <p>{question.description}</p>
+                                    </div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                </div>
         </>
     )
 }
