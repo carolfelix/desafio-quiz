@@ -34,6 +34,8 @@ namespace DesafioQuiz.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddControllers();
 
             var connection = @"Server=(localdb)\mssqllocaldb;Database=DesafioQuiz;Trusted_Connection=True;";
@@ -65,17 +67,18 @@ namespace DesafioQuiz.Api
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseCors(options => options
                .AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader()
            );
+
+            app.UseHttpsRedirection();
+
+            app.UseAuthorization();
+
 
             app.UseEndpoints(endpoints =>
             {
