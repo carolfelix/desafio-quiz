@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using DesafioQuiz.Api.ViewModels;
 using DesafioQuiz.Business.Interfaces;
-using DesafioQuiz.Model;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,16 +33,9 @@ namespace DesafioQuiz.Api.Controllers
 
             foreach (var item in getQuestions)
             {
-
-                foreach (var rep in getReplies.Where(x => x.QuestionId == item.Id))
-                {
-                    replies.Add(rep);
-                }
-
-                question.Add(new QuestionViewModel() { Id = item.Id, Description = item.Description, ListReplies = replies });
-
-                replies = new List<RepliesViewModel>();
-
+                var rep = getReplies.Where(x => x.QuestionId == item.Id).ToList();
+                             
+                question.Add(new QuestionViewModel() { Id = item.Id, Description = item.Description, ListReplies = rep });
 
             }
 
