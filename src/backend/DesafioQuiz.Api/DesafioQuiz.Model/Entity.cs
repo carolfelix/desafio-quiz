@@ -8,9 +8,9 @@ namespace DesafioQuiz.Model
     {
         public Entity()
         {
-            Code = new Guid();
+            Guid = new Guid();
         }
         public int Id { get; set; }
-        public Guid Code { get; set; }
+        public Guid Guid { get; set; }
     }
 }

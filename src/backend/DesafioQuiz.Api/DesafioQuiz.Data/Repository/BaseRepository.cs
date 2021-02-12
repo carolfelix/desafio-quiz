@@ -44,7 +44,7 @@ namespace DesafioQuiz.Data.Repository
 
         public TEntity GetByCode(Guid code)
         {
-            return DbSet.FirstOrDefault(x => x.Code == code);
+            return DbSet.FirstOrDefault(x => x.Guid == code);
         }
 
         public TEntity Save(TEntity entity)
