@@ -36,7 +36,7 @@ namespace DesafioQuiz.Api
         {
             services.AddControllers();
 
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=As;Trusted_Connection=True;";
+            var connection = @"Server=(localdb)\mssqllocaldb;Database=DesafioQuiz;Trusted_Connection=True;";
             services.AddDbContext<DesafioQuizContext>(options => options.UseSqlServer(connection));
 
 
