@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import api from '../../services/api.services';
+import Swal from 'sweetalert2'
 
 import './style.css';
 
@@ -8,6 +9,7 @@ export default function Quiz() {
 
     const [questions, setQuestions] = useState([])
     let countAnswerCorrect = 0;
+    const [isActive, setIsActive] = useState(false)
 
 
 
@@ -23,6 +25,7 @@ export default function Quiz() {
     }, [])
 
 
+
     function handleSubmit() {
 
         var inputElements = document.querySelectorAll('input[type="radio"]');
@@ -33,7 +36,15 @@ export default function Quiz() {
             }
         }
 
-        alert(`vc acertou ${countAnswerCorrect} perguntas`)
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `Parabéns! Você acertou ${countAnswerCorrect} perguntas!`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+        
+        setIsActive(true)
     }
 
     function verifyReplieSelected(idReplie) {
@@ -66,7 +77,7 @@ export default function Quiz() {
                                 {
                                     (question.listReplies || []).map((replies) => (
                                         <li key={replies.id} className="replies">
-                                            <div>
+                                            <div className={replies.answerCorrect && isActive && "correct"}>
                                                 <input type="radio" value={replies.id} name={'replies-' + question.id} />
                                                 {replies.description}
                                             </div>
@@ -78,7 +89,7 @@ export default function Quiz() {
 
                         ))
                     }
-                    <div>
+                    <div className="footer">
                         <button onClick={handleSubmit}>Enviar</button>
                     </div>
                 </div>
