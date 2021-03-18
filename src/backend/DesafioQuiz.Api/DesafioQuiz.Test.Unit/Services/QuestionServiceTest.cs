@@ -30,15 +30,15 @@ namespace DesafioQuiz.Test.Unit.Services
         [Test]
         public void ShouldCallGetAllQuestions()
         {
-            var list = new List<Question>();
+            var listQuestions = new List<Question>();
 
             var questions = new QuestionBuilder().Generate(4);
 
-            list.ForEach(question => list.Add(question));
+            listQuestions.ForEach(question => listQuestions.Add(question));
           
-            mockQuestionRepository.Setup(x => x.GetAll()).Returns(list);
+            mockQuestionRepository.Setup(x => x.GetAll()).Returns(listQuestions);
 
-           questionService.GetAll();
+            questionService.GetAll();
 
             mockQuestionRepository.Verify(x => x.GetAll(), Times.Once);
         }
