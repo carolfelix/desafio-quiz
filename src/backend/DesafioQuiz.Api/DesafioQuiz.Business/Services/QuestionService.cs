@@ -1,5 +1,6 @@
 ﻿using DesafioQuiz.Business.Interfaces;
 using DesafioQuiz.Data.Interfaces;
+using DesafioQuiz.Data.Repository;
 using DesafioQuiz.Model;
 using System;
 using System.Collections.Generic;

@@ -31,7 +31,7 @@ namespace DesafioQuiz.Data.Repository
             throw new NotImplementedException();
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return DbSet.ToList();
 

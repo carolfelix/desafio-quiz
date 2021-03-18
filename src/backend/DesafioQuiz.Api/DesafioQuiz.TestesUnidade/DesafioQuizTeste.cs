@@ -1,8 +1,11 @@
+using DesafioQuiz.Business.Interfaces;
+using DesafioQuiz.Business.Services;
 using DesafioQuiz.Data.Context;
 using DesafioQuiz.Data.Interfaces;
 using DesafioQuiz.Data.Repository;
 using DesafioQuiz.Model;
 using Microsoft.EntityFrameworkCore;
+using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -10,22 +13,24 @@ namespace DesafioQuiz.TestesUnidade
 {
     public class Tests
     {
-        private QuestionRepository questionRepository;
-        private DesafioQuizContext context;
-        private DbContextOptions DbContextOptions;
+        private  Mock<QuestionService> mockQuestionService;
+        private  Mock<IQuestionRepository> mockQuestionRepository;
+        private  QuestionService questionService;
 
 
         [SetUp]
         public void Setup()
         {
-            context = new DesafioQuizContext(DbContextOptions);
-            questionRepository = new QuestionRepository(context);
+            mockQuestionService = new Mock<QuestionService>();
+            mockQuestionRepository = new Mock<IQuestionRepository>();
+            questionService = new QuestionService(mockQuestionRepository.Object);
+
         }
 
         [Test]
-        public void TestGetAllQuestions()
+        public void GetAllQuestions()
         {
-            var questoesEsperada = new List<Question>()
+            var list = new List<Question>()
             {
                 new Question()
                 {
@@ -49,9 +54,11 @@ namespace DesafioQuiz.TestesUnidade
                 }
             };
 
-            var questoesEncontrada = questionRepository.GetAll();
+            mockQuestionRepository.Setup(x => x.GetAll()).Returns(list);
 
-            CollectionAssert.AreEqual(questoesEsperada, questoesEncontrada);
+            questionService.GetAll();
+
+            mockQuestionRepository.Verify(x => x.GetAll(), Times.Once);
         }
     }
 }
