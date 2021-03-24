@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DesafioQuiz.Test.Unit.Builders
+namespace DesafioQuiz.Test.Builders
 {
     public class QuestionBuilder : AutoFaker<Question>
     {

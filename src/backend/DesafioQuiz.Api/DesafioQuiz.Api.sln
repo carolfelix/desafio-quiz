@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioQuiz.Data", "Desafio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioQuiz.Model", "DesafioQuiz.Model\DesafioQuiz.Model.csproj", "{2B4A259A-AD88-4DBC-BBED-144F4B23A9D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioQuiz.Test.Unit", "DesafioQuiz.Test.Unit\DesafioQuiz.Test.Unit.csproj", "{83E823FA-51E1-4B7C-B7AC-CD8B1F08BA31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioQuiz.Test", "DesafioQuiz.Test.Unit\DesafioQuiz.Test.csproj", "{83E823FA-51E1-4B7C-B7AC-CD8B1F08BA31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
